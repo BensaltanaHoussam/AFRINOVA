@@ -1,0 +1,14 @@
+*{
+    font-family: "Oswald", sans-serif;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+
+.landingPage{
+    background-image: url("./img/bg-1.jpg") ;
+    background-size: cover;
+    background-position: center;
+    
+}
