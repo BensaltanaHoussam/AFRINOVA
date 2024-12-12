@@ -55,7 +55,7 @@ if (isset ($_POST['submit'])){
       <label for="country-location" class="font-semibold">Country Location:</label>
       <input type="text" name="country_location" id="country-location" class="p-2 border border-green-900 rounded " placeholder="Enter country location">
 
-      <label for="country-population" class="font-semibold">Country Population:</label>
+      <label for="country-population" class="font-semibold">Country Population :</label>
       <input type="number" name="country_population" id="country-population" class="p-2 border border-green-900 rounded" placeholder="Enter population">
 
       <label for="key-cities" class="font-semibold">Key Cities:</label>
