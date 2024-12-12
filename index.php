@@ -1,15 +1,3 @@
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "afrinova";
-
-$conn = mysqli_connect($servername , $username , $password , $dbname, 3307 );
-
-if (!$conn){
-    die("Erreur de connection : " . mysqli_connect_error());
-}
-?>
 
 
 <!DOCTYPE html>
@@ -91,16 +79,14 @@ if (!$conn){
       <div class=" py-8  ">
         <div class="flex items-center gap-4">
           <div>
-            <select class="px-2 py-1 flex ml-16" id="countries">
-              <option value="none" selected disabled>Countrys & Citys</option>
-              <option value="morocco">Countries</option>
-              <option value="morocco">Citys</option>
-          </select>
+            
+             <h1 class="bg-slate-100/15 text-white px-2 ml-16 py-1">Countrys :</h1>
+         
 
           </div>
        
         <div>
-          <a href="#" class="text-white text-sm border-2  px-2 py-1 hover:text-green-950 hover:bg-white hover:border-white transform duration-300 drop-shadow-2xl ">Add Countries & Cities <i class="ri-add-line"></i></a>
+          <a href="/AFRINOVA_PROJECT/countries-form.php" class="text-white text-sm border-2  px-2 py-1 hover:text-green-950 hover:bg-white hover:border-white transform duration-300 drop-shadow-2xl ">Add Countries <i class="ri-add-line"></i></a>
         </div>
         
         </div>
