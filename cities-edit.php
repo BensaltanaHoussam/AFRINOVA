@@ -1,4 +1,44 @@
+<?php  
 
+require('./db_connection.php');
+
+
+if (isset($_GET['id_pays'])) {
+  
+  $id = $_GET['id_pays'];
+  $sql = "SELECT * FROM pays WHERE id_pays = '$id'";
+  $result = $conn->query($sql);
+
+  if ($result->num_rows > 0) {
+      $row = $result->fetch_assoc();
+  } else {
+      echo "Pays introuvable.";
+      exit;
+  }
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+ 
+
+  $country_name = $_POST['country_name'];
+  $country_location = $_POST['country_location'];
+  $country_population = $_POST['country_population'];
+  $key_cities = $_POST['key_cities'];
+  $country_languages = $_POST['country_languages'];
+  $country_img = $_POST['country_img'];
+
+
+  $sql = "UPDATE pays SET country_name='$country_name', country_location='$country_location', country_population='$country_population', key_cities='$key_cities', country_languages='$country_languages',country_img='$country_img' WHERE id_pays='$id'";
+
+  if ($conn->query($sql) === TRUE) {
+    
+      header("Location: index.php");
+      exit;
+  } else {
+      echo "Erreur : " . $conn->error;
+  }
+}
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
