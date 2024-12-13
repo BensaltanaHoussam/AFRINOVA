@@ -104,62 +104,35 @@
       <div class="">
         <div class="pt-4 pb-16">
           <div class="flex justify-around flex-wrap gap-4 px-2">
-            <div class="relative w-[400px] hover:bg-black/30">
-              <img class="w-full rounded-lg " src="./img/Morroco.jpg" alt="Morocco">
+
+          <?php
+
+require('./db_connection.php');
+
+
+$sql = "SELECT * FROM pays";
+$allCountries = $conn->query($sql); 
+
+
+if ($allCountries->num_rows > 0) {
+
+    while($row = $allCountries->fetch_assoc()) {
+        ?>
+           <div class="relative w-[400px] hover:bg-black/30">
+              <img class="w-full rounded-lg " src="<?php echo $row['country_img']; ?>" alt="<?php echo $row['country_name']; ?>">
               <div class="absolute bottom-0 w-full h-[100px]  text-white text-xl font-bold bg-black/30 rounded-b-lg px-4">
-                <h1>Morocco</h1>
-                <p class="text-xs font-light">Morocco, located in North Africa, has a population of 37 million people. Its key cities include Rabat, Casablanca, Marrakech, Fès, Tangier, and Agadir. The official languages are Arabic and Amazigh, with French widely used.</p>
+                <h1><?php echo $row['country_name']; ?></h1>
+                <p class="text-xs font-light"><?php echo $row['country_name']; ?>, located in <?php echo $row['country_location']; ?> , has a population of <?php echo $row['country_population']; ?> million people. Its key cities include <?php echo $row['key_cities']; ?>. The official languages are <?php echo $row['country_languages']; ?>.</p>
                 <a class="text-xs font-normal flex justify-end  hover:text-gray-200" href="#">Explore more</a>
               </div>
             </div>
-
-
-            <div class="relative w-[400px] hover:bg-black/30">
-              <img class="w-full rounded-lg " src="./img/southAfrica.jpg" alt="Morocco">
-              <div class="absolute bottom-0 w-full h-[100px]  text-white text-xl font-bold bg-black/30 rounded-b-lg px-4">
-                <h1>South africa</h1>
-                <p class="text-xs font-light">Morocco, located in North Africa, has a population of 37 million people. Its key cities include Rabat, Casablanca, Marrakech, Fès, Tangier, and Agadir. The official languages are Arabic and Amazigh, with French widely used.</p>
-                <a class="text-xs font-normal flex justify-end  hover:text-gray-200" href="#">Explore more</a>
-              </div>
-            </div>
-            
-
-
-            <div class="relative w-[400px] hover:bg-black/30">
-              <img class="w-full rounded-lg " src="./img/Egypt.jpg" alt="Morocco">
-              <div class="absolute bottom-0 w-full h-[100px]  text-white text-xl font-bold bg-black/30 rounded-b-lg px-4">
-                <h1>Morocco</h1>
-                <p class="text-xs font-light">Morocco, located in North Africa, has a population of 37 million people. Its key cities include Rabat, Casablanca, Marrakech, Fès, Tangier, and Agadir. The official languages are Arabic and Amazigh, with French widely used</p>
-                <a class="text-xs font-normal flex justify-end  hover:text-gray-200" href="#">Explore more</a>
-              </div>
-            </div>
-
-            <div class="relative w-[400px] hover:bg-black/30">
-              <img class="w-full rounded-lg " src="./img/Egypt.jpg" alt="Morocco">
-              <div class="absolute bottom-0 w-full h-[100px]  text-white text-xl font-bold bg-black/30 rounded-b-lg px-4">
-                <h1>Morocco</h1>
-                <p class="text-xs font-light">Morocco, located in North Africa, has a population of 37 million people. Its key cities include Rabat, Casablanca, Marrakech, Fès, Tangier, and Agadir. The official languages are Arabic and Amazigh, with French widely used</p>
-                <a class="text-xs font-normal flex justify-end  hover:text-gray-200" href="#">Explore more</a>
-              </div>
-            </div>
-
-            <div class="relative w-[400px] hover:bg-black/30">
-              <img class="w-full rounded-lg " src="./img/Egypt.jpg" alt="Morocco">
-              <div class="absolute bottom-0 w-full h-[100px]  text-white text-xl font-bold bg-black/30 rounded-b-lg px-4">
-                <h1>Morocco</h1>
-                <p class="text-xs font-light">Morocco, located in North Africa, has a population of 37 million people. Its key cities include Rabat, Casablanca, Marrakech, Fès, Tangier, and Agadir. The official languages are Arabic and Amazigh, with French widely used.</p>
-                <a class="text-xs font-normal flex justify-end  hover:text-gray-200" href="#">Explore more</a>
-              </div>
-            </div>
-
-            <div class="relative w-[400px] hover:bg-black/30">
-              <img class="w-full rounded-lg " src="./img/Egypt.jpg" alt="Morocco">
-              <div class="absolute bottom-0 w-full h-[100px]  text-white text-xl font-bold bg-black/30 rounded-b-lg px-4">
-                <h1>Morocco</h1>
-                <p class="text-xs font-light">Morocco, located in North Africa, has a population of 37 million people. Its key cities include Rabat, Casablanca, Marrakech, Fès, Tangier, and Agadir. The official languages are Arabic and Amazigh, with French widely used.</p>
-                <a class="text-xs font-normal flex justify-end  hover:text-gray-200" href="#">Explore more</a>
-              </div>
-            </div> 
+        <?php
+    }
+} else {
+    // If no data found, display a message
+    echo "No countries found!";
+}
+?>
            
            
             

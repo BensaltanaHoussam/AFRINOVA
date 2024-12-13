@@ -45,32 +45,31 @@ if (isset ($_POST['submit'])){
       </div>
     </div>
 
-    <h1 class="font-bold text-black  text-2xl py-4 text-center mt-4 mb-4 ">Add Country Information</h1>
+
+    <section>
+    <div class="flex flex-col h-screen">
+	<div class="relative flex flex-col md:flex-row  md:space-y-0 rounded-xl mt-4 ml-2 shadow-lg p-3 s md:max-w-3xl border border-white bg-white">
+		<div class="w-full md:w-1/3 bg-white grid place-items-center">
+			<img src="https://images.pexels.com/photos/4381392/pexels-photo-4381392.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="picture" class="rounded-xl " />
+         </div>
+			<div class="w-full md:w-2/3 bg-white flex flex-col space-y-2 p-3">
+				
+				<h3 class="font-black text-gray-800 md:text-3xl text-xl">Casablanca</h3>
+				<p class="md:text-lg text-gray-500 text-base">Casablanca is Morocco's largest city and economic hub, located on the Atlantic coast. Known for the iconic Hassan II Mosque and vibrant culture, it combines modern architecture with historical sites like the Habous Quarter. The city also has a busy port, lively nightlife, and is a key business and tourism destination.</p>
+				<p class="text-xl font-black text-gray-800">
+				   Capital
+				</p>
+			</div>
+		</div>
+	</div>
+
     
-    <section class="pb-20">
-    <form class="flex flex-col gap-4  mx-auto w-full md:w-1/2 bg-gray-50 p-8  rounded shadow" method="POST">
-      <label for="country-name" class="font-semibold">Country Name:</label>
-      <input type="text" name="country_name" id="country-name" class="p-2 border border-green-900 rounded" placeholder="Enter country name">
-
-      <label for="country-location" class="font-semibold">Country Location:</label>
-      <input type="text" name="country_location" id="country-location" class="p-2 border border-green-900 rounded " placeholder="Enter country location">
-
-      <label for="country-population" class="font-semibold">Country Population :</label>
-      <input type="number" name="country_population" id="country-population" class="p-2 border border-green-900 rounded" placeholder="Enter population">
-
-      <label for="key-cities" class="font-semibold">Key Cities:</label>
-      <input type="text" name="key_cities" id="key-cities" class="p-2 border border-green-900 rounded" placeholder="Enter key cities">
-
-      <label for="country-languages" class="font-semibold">Country Languages:</label>
-      <input type="text" name="country_languages" id="country-languages" class="p-2 border border-green-900 rounded" placeholder="Enter languages">
-
-      <label for="country-img" class="font-semibold">Country Image URL:</label>
-      <input type="text" name="country_img" id="country-img" class="p-2 border border-green-900 rounded" placeholder="Enter image URL">
-
-      <button href="index.php?" type="submit" name="submit" class="mt-4 bg-green-950 text-white py-2 px-4 rounded hover:bg-green-700 transform duration-300">Add Country</button>
-    </form>
-
     </section>
+
+  
+    
+   
+
     
   </section>
 
