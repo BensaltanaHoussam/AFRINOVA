@@ -32,7 +32,7 @@ require('./db_connection.php');
     <div class="  text-white bg-black/40 flex flex-col md:flex-row items-center px-4 py-2 md:px-20 gap-4 md:gap-20  mt-16  " >
   
       <h1 class="text-6xl text-start"><?php echo $row['city_name']; ?> </h1>
-      <p class="text-start ">Morocco is a North African country known for its rich culture, stunning landscapes, and historic cities like Marrakech and Casablanca. It features deserts, mountains, and coastal areas. The country blends Arab, Berber, and European influences, with Arabic and Berber as official languages. Islam is the dominant religion.</p>
+      <p class="text-start ">Morocco is a North African country known for its rich culture, stunning landscapes, and historic cities like Marrakech and Casablanca. It features deserts, mountains, and coastal areas. The country blends Arab, Berber, and European influences, with Arabic and Berber as official languages. Islam is the dominant religion. </p>
     </div>
       
       
