@@ -1,9 +1,4 @@
-<?php  
 
-require('./db_connection.php');
-
-
-?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,26 +14,41 @@ require('./db_connection.php');
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <section class="bg-[url('./img/Morroco.jpg')] bg-cover bg-center h-[350px] ">
-    <div class="flex justify-between cursor-pointer items-center py-4 px-4 md:px-24 bg-gradient-to-r from-green-950/80 to-black/70">
-      <img  class="w-[120px]" src="./img/logo.png" alt="logo">
-      <div>
-        <a href="#" class="text-white text-lg border-2 rounded-3xl py-1 px-4 hover:text-green-950 hover:bg-white hover:border-white transform duration-300">Contact Us</a>
-      </div>
+<?php
+require('./db_connection.php');
+
+// Check if 'id_pays' is set in the URL
+if (isset($_GET['id_pays'])) {
+    $id = $_GET['id_pays'];
+    $sql = "SELECT * FROM pays WHERE id_pays = $id";
+    $allpays = $conn->query($sql);
+    if ($allpays->num_rows > 0) {
+        $row = $allpays->fetch_assoc();
+        $paysName = $row['country_name'];
+    } else {
+      $paysName = 'country Not Found';
+    }
+} else {
+  $paysName = 'Unknown country';
+}
+?>
+
+<section class="bg-[url('<?php echo $row['country_img']; ?>')] bg-cover bg-center h-[350px]">
+    <div class="flex justify-between cursor-pointer items-center  py-4 px-4 md:px-24 bg-gradient-to-r from-green-950/80 to-black/70">
+        <img class="w-[120px]" src="./img/logo.png" alt="logo">
+        <div>
+            <a href="#" class="text-white text-lg border-2 rounded-3xl py-1 px-4 hover:text-green-950 hover:bg-white hover:border-white transform duration-300">Contact Us</a>
+        </div>
     </div>
 
-    
-
-    <div class="  text-white bg-black/40 flex flex-col md:flex-row items-center px-4 py-2 md:px-20 gap-4 md:gap-20  mt-16  " >
-  
-      <h1 class="text-6xl text-start"><?php echo $row['city_name']; ?> </h1>
-      <p class="text-start ">Morocco is a North African country known for its rich culture, stunning landscapes, and historic cities like Marrakech and Casablanca. It features deserts, mountains, and coastal areas. The country blends Arab, Berber, and European influences, with Arabic and Berber as official languages. Islam is the dominant religion.  </p>
+    <div class="text-white bg-black/40 flex flex-col md:flex-row items-center px-4 py-2 md:px-20 gap-4 md:gap-20 mt-16">
+        <h1 class="text-6xl text-start"><?php echo $paysName; ?></h1>
+        <p class="text-start">
+        <?php echo $row['country_name']; ?>, located in <?php echo $row['country_location']; ?>, has a population of <?php echo $row['country_population']; ?> million people. 
+        Its key cities include <?php echo $row['key_cities']; ?>. The official languages are <?php echo $row['country_languages']; ?>.
+        </p>
     </div>
-      
-      
-
-    
-  </section>
+</section>
 
 
   <section class="bg-white">  
