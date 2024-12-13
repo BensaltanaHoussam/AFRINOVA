@@ -27,7 +27,7 @@
     <section class="landingPage h-[530px]">
       <div class="flex  justify-between items-center py-4 px-4 md:px-24 bg-gradient-to-r from-green-950/80 to-black/70 "> 
       
-          <img class="w-[120px]" src="./img/logo.png" alt="logo">
+          <img href="./index.php" class="w-[120px]" src="./img/logo.png" alt="logo">
         
         <div>
           <a href="#" class="text-white text-lg border-2 rounded-3xl py-1 px-4 hover:text-green-950 hover:bg-white hover:border-white transform duration-300  ">Contact Us</a>
@@ -106,26 +106,29 @@
           <div class="flex justify-around flex-wrap gap-4 px-2">
 
           <?php
-
 require('./db_connection.php');
 
-
 $sql = "SELECT * FROM pays";
-$allCountries = $conn->query($sql); 
-
+$allCountries = $conn->query($sql);
 
 if ($allCountries->num_rows > 0) {
-
     while($row = $allCountries->fetch_assoc()) {
         ?>
-           <div class="relative w-[400px] hover:bg-black/30">
-              <img class="w-full rounded-lg " src="<?php echo $row['country_img']; ?>" alt="<?php echo $row['country_name']; ?>">
-              <div class="absolute bottom-0 w-full h-[100px]  text-white text-xl font-bold bg-black/30 rounded-b-lg px-4">
+        <div class="relative w-[400px] hover:bg-black/30">
+            <img class="w-full rounded-lg" src="<?php echo $row['country_img']; ?>" alt="<?php echo $row['country_name']; ?>">
+            <div class="absolute bottom-0 w-full h-[100px] text-white text-xl font-bold bg-black/30 rounded-b-lg px-4">
                 <h1><?php echo $row['country_name']; ?></h1>
-                <p class="text-xs font-light"><?php echo $row['country_name']; ?>, located in <?php echo $row['country_location']; ?> , has a population of <?php echo $row['country_population']; ?> million people. Its key cities include <?php echo $row['key_cities']; ?>. The official languages are <?php echo $row['country_languages']; ?>.</p>
-                <a class="text-xs font-normal flex justify-end  hover:text-gray-200" href="#">Explore more</a>
-              </div>
+                <p class="text-xs font-light">
+                    <?php echo $row['country_name']; ?>, located in <?php echo $row['country_location']; ?>, has a population of <?php echo $row['country_population']; ?> million people. 
+                    Its key cities include <?php echo $row['key_cities']; ?>. The official languages are <?php echo $row['country_languages']; ?>.
+                </p>
+                <a 
+                    class="text-xs font-normal flex justify-end hover:text-gray-200" 
+                    href="cities.php?id_pays=<?php echo $row['id_pays']; ?>">
+                    Explore more
+                </a>
             </div>
+        </div>
         <?php
     }
 } else {
@@ -133,6 +136,7 @@ if ($allCountries->num_rows > 0) {
     echo "No countries found!";
 }
 ?>
+
            
            
             

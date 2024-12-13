@@ -2,6 +2,26 @@
 
 require('./db_connection.php');
 
+if (isset ($_GET['id_pays'])){$id = $_GET['id_pays'];};
+
+
+if (isset ($_POST['submit'])){
+
+  $city_name = $_POST['city_name'];
+  $city_description = $_POST['city_description'];
+  $Type = $_POST['Type'];
+  $city_img = $_POST['city_img'];
+ 
+
+  $query = mysqli_query($conn, "INSERT INTO city (city_name, city_description, Type, city_img ,id_pays) VALUES ('$city_name', '$city_description', '$Type', '$city_img' ,'$id')");
+
+  if($query) {
+    header("Location: cities.php?id_pays={$id}");
+  }else{
+    echo "<script>alert('There is an error');</script>";
+  }
+
+}
 
 ?>
 
@@ -19,90 +39,36 @@ require('./db_connection.php');
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <section class="bg-[url('./img/Morroco.jpg')] bg-cover bg-center h-[350px] ">
+  <section class="landingPage h-full">
     <div class="flex justify-between cursor-pointer items-center py-4 px-4 md:px-24 bg-gradient-to-r from-green-950/80 to-black/70">
-      <img  class="w-[120px]" src="./img/logo.png" alt="logo">
+      <img  href="index.php?" class="w-[120px]" src="./img/logo.png" alt="logo">
       <div>
         <a href="#" class="text-white text-lg border-2 rounded-3xl py-1 px-4 hover:text-green-950 hover:bg-white hover:border-white transform duration-300">Contact Us</a>
       </div>
     </div>
 
+    <h1 class="font-bold text-black  text-2xl py-4 text-center mt-4 mb-4 ">Add City Information</h1>
     
+    <section class="pb-20">
+    <form class="flex flex-col gap-4  mx-auto w-full md:w-1/2 bg-gray-50 p-8  rounded shadow" method="POST">
+      <label for="city-name" class="font-semibold">City Name:</label>
+      <input type="text" name="city_name" id="city_name" class="p-2 border border-green-900 rounded" placeholder="Enter country name">
 
-    <div class="  text-white bg-black/40 flex flex-col md:flex-row items-center px-4 py-2 md:px-20 gap-4 md:gap-20  mt-16  " >
-  
-      <h1 class="text-6xl text-start"><?php echo $row['city_name']; ?> </h1>
-      <p class="text-start ">Morocco is a North African country known for its rich culture, stunning landscapes, and historic cities like Marrakech and Casablanca. It features deserts, mountains, and coastal areas. The country blends Arab, Berber, and European influences, with Arabic and Berber as official languages. Islam is the dominant religion.</p>
-    </div>
-      
-      
+      <label for="city-description" class="font-semibold">Description:</label>
+      <textarea type="text" rows="4" name="city_description" id="city_description" class="p-2 border border-green-900 rounded " placeholder="Enter country location"></textarea>
 
+      <label for="Type" class="font-semibold">Type(Capital or City) :</label>
+      <input type="text" name="Type" id="Type" class="p-2 border border-green-900 rounded" placeholder="Enter city type">
+
+      <label for="city-img" class="font-semibold">City Image URL:</label>
+      <input type="text" name="city_img" id="city-img" class="p-2 border border-green-900 rounded" placeholder="Enter image URL">
+
+      <button href="index.php?" type="submit" name="submit" class="mt-4 bg-green-950 text-white py-2 px-4 rounded hover:bg-green-700 transform duration-300">Add Country</button>
+    </form>
+
+    </section>
     
   </section>
-
-
-  <section class="bg-white">  
-
-
-
-
-  <div class=" py-8  ">
-        <div class="flex items-center gap-4">
-          <div>
-            
-             <h1 class="bg-slate-100/15 text-black px-2 ml-16 py-1">Countrys :</h1>
-         
-
-          </div>
-       
-        <div>
-          <a href="/AFRINOVA_PROJECT/cities-form.php?id_pays=<?php if (isset ($_GET['id_pays'])) {$id = $_GET['id_pays'];}; echo "$id"; ?>" class="text-black  text-sm border-2  px-2 py-1 hover:text-white hover:bg-green-950 hover:border-white transform duration-300 drop-shadow-2xl ">Add Countries <i class="ri-add-line"></i></a>
-        </div>
-        
-        </div>
-        <P class="text-white font-light ml-16 pt-1 ">This is the best 3 Countrys on africa :</P>
-
-      
-
-
-      
-      </div>
-
-
-
-
-      <?php
-require('./db_connection.php');
-if (isset ($_GET['id_pays'])) {$id = $_GET['id_pays'];
-
-  $sql = "SELECT * FROM city WHERE id_pays=$id";
-$allCities = $conn->query($sql);
- 
-if ($allCities->num_rows > 0) {
-    while($row = $allCities->fetch_assoc()) {
-        ?>
-          <div class=" p-4 flex justify-center gap-8 w-[full]">
-          <img  class="w-[300px]" src="<?php echo $row['city_img']; ?>" <?php echo $row['city_name']; ?>">
-    <div>
-      <h1 class="text-lg font-semibold pb-2"><?php echo $row['city_name']; ?></h1>
-      <P class="text-lg pb-4 w-[600px]"><?php echo $row['city_description']; ?></P>
-      <P><?php echo $row['type']; ?></P>
-    </div>
-  </div>
-      
-        <?php
-    }
-} else {
-    // If no data found, display a message
-    echo "No cities found!";
-}
-
-};
-?>
-
-    
-  
-    </section>
 
 
 

@@ -39,7 +39,7 @@ if (isset ($_POST['submit'])){
 <body>
   <section class="landingPage h-full">
     <div class="flex justify-between cursor-pointer items-center py-4 px-4 md:px-24 bg-gradient-to-r from-green-950/80 to-black/70">
-      <img  class="w-[120px]" src="./img/logo.png" alt="logo">
+      <img  href="index.php?"   class="w-[120px]" src="./img/logo.png" alt="logo">
       <div>
         <a href="#" class="text-white text-lg border-2 rounded-3xl py-1 px-4 hover:text-green-950 hover:bg-white hover:border-white transform duration-300">Contact Us</a>
       </div>
@@ -84,9 +84,11 @@ if (isset ($_POST['submit'])){
     
       <div class="bg-green-950 p-4 flex flex-col items-center">
         <img
+
         class="w-40 pb-2 "
         src="./img/logo.png"
         alt="logo"
+
       />
       <p class="text-xs w-32 text-center text-white">Thank you for visiting our website! We appreciate your time and support. If you have any questions or feedback, feel free to reach out. We look forward to having you back soon!</p>
       
