@@ -117,16 +117,32 @@ if ($allCountries->num_rows > 0) {
         <div class="relative w-[400px] hover:bg-black/30">
             <img class="w-full rounded-lg" src="<?php echo $row['country_img']; ?>" alt="<?php echo $row['country_name']; ?>">
             <div class="absolute bottom-0 w-full h-[100px] text-white text-xl font-bold bg-black/30 rounded-b-lg px-4">
-                <h1><?php echo $row['country_name']; ?></h1>
+              <div class="flex justify-between ">
+              <h1><?php echo $row['country_name']; ?></h1>
+              <div>
+              <a href="countries-edit.php?id_pays=<?php echo $row['id_pays']; ?>"><i class="ri-edit-fill text-sm text-slate-200 hover:text-green-900 transform duration-300"></i></a>
+              <a href="delete_country.php?id_pays=<?php echo $row['id_pays']; ?>"><i class="ri-delete-bin-7-fill text-sm text-slate-200 hover:text-green-900 transform duration-300"></i></a>
+              </div>
+              
+
+              </div>
+
+                
                 <p class="text-xs font-light">
                     <?php echo $row['country_name']; ?>, located in <?php echo $row['country_location']; ?>, has a population of <?php echo $row['country_population']; ?> million people. 
                     Its key cities include <?php echo $row['key_cities']; ?>. The official languages are <?php echo $row['country_languages']; ?>.
                 </p>
+
+                  
+               
                 <a 
                     class="text-xs font-normal flex justify-end hover:text-gray-200" 
                     href="cities.php?id_pays=<?php echo $row['id_pays']; ?>">
                     Explore more
                 </a>
+
+             
+
             </div>
         </div>
         <?php

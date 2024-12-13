@@ -91,11 +91,21 @@ $allCities = $conn->query($sql);
 if ($allCities->num_rows > 0) {
     while($row = $allCities->fetch_assoc()) {
         ?>
-          <div class=" p-4 flex justify-center gap-8 w-[full]">
-          <img  class="w-[300px]" src="<?php echo $row['city_img']; ?>" <?php echo $row['city_name']; ?>">
+          <div class=" p-4 flex md:flex-row flex-col justify-center border-2  border-slate-300 gap-20 w-[full]">
+          <img  class="w-[300px] rounded-xl" src="<?php echo $row['city_img']; ?>" <?php echo $row['city_name']; ?>">
     <div>
+      <div class="flex justify-between items-center">
+
       <h1 class="text-lg font-semibold pb-2"><?php echo $row['city_name']; ?></h1>
-      <P class="text-lg pb-4 w-[600px]"><?php echo $row['city_description']; ?></P>
+
+<div>
+        <a href="#"><i class="ri-edit-fill text-sm text-black  hover:text-green-900 transform duration-300"></i></a>
+        <a href="#"><i class="ri-delete-bin-7-fill text-sm text-black  hover:text-green-900 transform duration-300"></i></a>
+        </div>
+
+      </div>
+     
+      <P class="text-lg pb-4 md:w-[600px]"><?php echo $row['city_description']; ?></P>
       <P><?php echo $row['type']; ?></P>
     </div>
   </div>
