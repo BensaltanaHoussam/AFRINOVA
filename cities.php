@@ -60,13 +60,13 @@ if (isset($_GET['id_pays'])) {
         <div class="flex items-center gap-4">
           <div>
             
-             <h1 class="bg-slate-100/15 text-black px-2 ml-16 py-1">Countrys :</h1>
+             <h1 class="bg-slate-100/15 text-black px-2 ml-16 py-1">Cities :</h1>
          
 
           </div>
        
         <div>
-          <a href="/AFRINOVA_PROJECT/cities-form.php?id_pays=<?php if (isset ($_GET['id_pays'])) {$id = $_GET['id_pays'];}; echo "$id"; ?>" class="text-black  text-sm border-2  px-2 py-1 hover:text-white hover:bg-green-950 hover:border-white transform duration-300 drop-shadow-2xl ">Add Countries <i class="ri-add-line"></i></a>
+          <a href="/AFRINOVA_PROJECT/cities-form.php?id_pays=<?php if (isset ($_GET['id_pays'])) {$id = $_GET['id_pays'];}; echo "$id"; ?>" class="text-black  text-sm border-2  px-2 py-1 hover:text-white hover:bg-green-950 hover:border-white transform duration-300 drop-shadow-2xl ">Add City <i class="ri-add-line"></i></a>
         </div>
         
         </div>
@@ -91,15 +91,15 @@ $allCities = $conn->query($sql);
 if ($allCities->num_rows > 0) {
     while($row = $allCities->fetch_assoc()) {
         ?>
-          <div class=" p-4 flex md:flex-row flex-col justify-center border-2  border-slate-300 gap-20 w-[full]">
-          <img  class="w-[300px] rounded-xl" src="<?php echo $row['city_img']; ?>" <?php echo $row['city_name']; ?>">
+          <div class=" p-4 flex md:flex-row flex-col items-center md:justify-center border-2  border-slate-300 gap-20 w-[full]">
+          <img  class="w-[300px] flex rounded-xl" src="<?php echo $row['city_img']; ?>" <?php echo $row['city_name']; ?>">
     <div>
       <div class="flex justify-between items-center">
 
       <h1 class="text-lg font-semibold pb-2"><?php echo $row['city_name']; ?></h1>
 
 <div>
-        <a href="#"><i class="ri-edit-fill text-sm text-black  hover:text-green-900 transform duration-300"></i></a>
+        <a  href="cities-edit.php?id_city=<?php echo $row['id_city']; ?>&id_pays=<?php echo $row['id_pays']; ?>"><i class="ri-edit-fill text-sm text-black  hover:text-green-900 transform duration-300"></i></a>
         <a href="#"><i class="ri-delete-bin-7-fill text-sm text-black  hover:text-green-900 transform duration-300"></i></a>
         </div>
 

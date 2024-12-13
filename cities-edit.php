@@ -3,36 +3,33 @@
 require('./db_connection.php');
 
 
-if (isset($_GET['id_pays'])) {
-  
-  $id = $_GET['id_pays'];
-  $sql = "SELECT * FROM pays WHERE id_pays = '$id'";
+if (isset($_GET['id_city']) && isset($_GET['id_pays']) ) {
+  $id_pays = $_GET['id_pays'];
+  $id = $_GET['id_city'];
+  $sql = "SELECT * FROM city WHERE id_city = '$id'";
   $result = $conn->query($sql);
 
   if ($result->num_rows > 0) {
       $row = $result->fetch_assoc();
   } else {
       echo "Pays introuvable.";
-      exit;
   }
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
- 
-
-  $country_name = $_POST['country_name'];
-  $country_location = $_POST['country_location'];
-  $country_population = $_POST['country_population'];
-  $key_cities = $_POST['key_cities'];
-  $country_languages = $_POST['country_languages'];
-  $country_img = $_POST['country_img'];
+  
+  $city_name = $_POST['city_name'];
+  $city_description = $_POST['city_description'];
+  $Type = $_POST['Type'];
+  $city_img = $_POST['city_img'];
 
 
-  $sql = "UPDATE pays SET country_name='$country_name', country_location='$country_location', country_population='$country_population', key_cities='$key_cities', country_languages='$country_languages',country_img='$country_img' WHERE id_pays='$id'";
+
+  $sql = "UPDATE city SET city_name='$city_name', city_description='$city_description', Type='$Type', city_img='$city_img' WHERE id_city='$id'";
 
   if ($conn->query($sql) === TRUE) {
-    
-      header("Location: index.php");
+   
+      header("Location: cities.php?id_pays=$id_pays");
       exit;
   } else {
       echo "Erreur : " . $conn->error;
@@ -67,16 +64,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <section class="pb-20">
     <form class="flex flex-col gap-4  mx-auto w-full md:w-1/2 bg-gray-50 p-8  rounded shadow" method="POST">
       <label for="city-name" class="font-semibold">City Name:</label>
-      <input type="text" name="city_name" id="city_name" class="p-2 border border-green-900 rounded" placeholder="Enter country name">
+      <input type="text" name="city_name" id="city_name" value="<?php echo $row['city_name']; ?>" class="p-2 border border-green-900 rounded" placeholder="Enter city name">
 
       <label for="city-description" class="font-semibold">Description:</label>
-      <textarea type="text" rows="4" name="city_description" id="city_description" class="p-2 border border-green-900 rounded " placeholder="Enter country location"></textarea>
+      <textarea type="text" rows="4" name="city_description" value="<?php echo $row['city_description']; ?>"  id="city_description" class="p-2 border border-green-900 rounded " placeholder="Enter a description"></textarea>
 
       <label for="Type" class="font-semibold">Type(Capital or City) :</label>
-      <input type="text" name="Type" id="Type" class="p-2 border border-green-900 rounded" placeholder="Enter city type">
+      <input type="text" name="Type" value="<?php echo $row['type']; ?>" id="Type" class="p-2 border border-green-900 rounded" placeholder="Enter city type">
 
       <label for="city-img" class="font-semibold">City Image URL:</label>
-      <input type="text" name="city_img" id="city-img" class="p-2 border border-green-900 rounded" placeholder="Enter image URL">
+      <input type="text" name="city_img" value="<?php echo $row['city_img']; ?>" id="city-img" class="p-2 border border-green-900 rounded" placeholder="Enter image URL">
+
+      
 
       <button href="index.php?" type="submit" name="submit" class="mt-4 bg-green-950 text-white py-2 px-4 rounded hover:bg-green-700 transform duration-300">Add Country</button>
     </form>
