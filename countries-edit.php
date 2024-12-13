@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
   <section class="landingPage h-full">
     <div class="flex justify-between cursor-pointer items-center py-4 px-4 md:px-24 bg-gradient-to-r from-green-950/80 to-black/70">
-      <img  href="index.php?"   class="w-[120px]" src="./img/logo.png" alt="logo">
+    <a href="/AFRINOVA_PROJECT"><img  class="w-[120px]" src="./img/logo.png" alt="logo"></a>
       <div>
         <a href="#" class="text-white text-lg border-2 rounded-3xl py-1 px-4 hover:text-green-950 hover:bg-white hover:border-white transform duration-300">Contact Us</a>
       </div>

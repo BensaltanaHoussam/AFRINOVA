@@ -35,13 +35,13 @@ if (isset($_GET['id_pays'])) {
 
 <section class="bg-[url('<?php echo $row['country_img']; ?>')] bg-cover bg-center h-[350px]">
     <div class="flex justify-between cursor-pointer items-center  py-4 px-4 md:px-24 bg-gradient-to-r from-green-950/80 to-black/70">
-        <img class="w-[120px]" src="./img/logo.png" alt="logo">
+        <a href="/AFRINOVA_PROJECT"><img  class="w-[120px]" src="./img/logo.png" alt="logo"></a>
         <div>
             <a href="#" class="text-white text-lg border-2 rounded-3xl py-1 px-4 hover:text-green-950 hover:bg-white hover:border-white transform duration-300">Contact Us</a>
         </div>
     </div>
 
-    <div class="text-white bg-black/40 flex flex-col md:flex-row items-center px-4 py-2 md:px-20 gap-4 md:gap-20 mt-16">
+    <div class="text-white bg-black/40 flex flex-col md:flex-row items-center px-4 py-8 md:px-20 gap-4 md:gap-20 mt-16">
         <h1 class="text-6xl text-start"><?php echo $paysName; ?></h1>
         <p class="text-start">
         <?php echo $row['country_name']; ?>, located in <?php echo $row['country_location']; ?>, has a population of <?php echo $row['country_population']; ?> million people. 
@@ -100,7 +100,7 @@ if ($allCities->num_rows > 0) {
 
 <div>
         <a  href="cities-edit.php?id_city=<?php echo $row['id_city']; ?>&id_pays=<?php echo $row['id_pays']; ?>"><i class="ri-edit-fill text-sm text-black  hover:text-green-900 transform duration-300"></i></a>
-        <a href="#"><i class="ri-delete-bin-7-fill text-sm text-black  hover:text-green-900 transform duration-300"></i></a>
+        <a href="delete_cities.php?id_city=<?php echo $row['id_city']; ?>&id_pays=<?php echo $row['id_pays']; ?>"><i class="ri-delete-bin-7-fill text-sm text-black  hover:text-green-900 transform duration-300"></i></a>
         </div>
 
       </div>
